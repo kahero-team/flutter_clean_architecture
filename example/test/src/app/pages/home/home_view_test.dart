@@ -13,7 +13,7 @@ void main() {
     ));
     expect(find.byKey(const Key('homePage')), findsOneWidget);
     await tester.tap(find.widgetWithIcon(FloatingActionButton, Icons.add));
-    await tester.pump();
+    await tester.pumpAndSettle();
     var counterFinder = find.text('Button pressed 1 times.');
     expect(counterFinder, findsOneWidget);
   });
@@ -46,5 +46,14 @@ void main() {
     await tester.pump();
     var counterFinder = find.text('No element');
     expect(counterFinder, findsOneWidget);
+  });
+
+  testWidgets('desc', (tester) async {
+    await tester.pumpWidget(const MaterialApp(
+      home: HomePage(key: Key('homePage'), title: 'Flutter Demo Home Page'),
+    ));
+
+    tester.binding.reassembleApplication();
+    tester.idle();
   });
 }

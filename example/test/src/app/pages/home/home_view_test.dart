@@ -48,7 +48,7 @@ void main() {
     expect(counterFinder, findsOneWidget);
   });
 
-  testWidgets('desc', (tester) async {
+  testWidgets('Trigger Reassemble', (tester) async {
     await tester.pumpWidget(const MaterialApp(
       home: HomePage(key: Key('homePage'), title: 'Flutter Demo Home Page'),
     ));
